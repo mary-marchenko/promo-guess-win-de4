@@ -1,0 +1,29 @@
+@import "../var"
+
+.eurofan.en
+  .info
+    &__title
+      min-width: 630px
+      @media screen and (max-width: 1050px)
+        min-width: 370px
+      @media screen and (max-width: 755px)
+        min-width: 300px
+    @media screen and (max-width: 1265px)
+      background-position: 50% 100%
+      background-size: cover
+    @media screen and (max-width: 1231px)
+      background-position: 40% 100%
+    @media screen and (max-width: 1125px)
+      background-position: 35% 100%
+
+  .banner
+    &__center
+      @media screen and (max-width: 755px)
+        max-width: 203px
+      @media screen and (max-width: 600px)
+        max-width: 200px
+  .table__row.you .you
+    left: 4px
+    @media screen and (max-width: 600px)
+      font-size: 9px
+      padding: 1px 2px 2px
