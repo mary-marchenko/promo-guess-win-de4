@@ -1,0 +1,1476 @@
+@import "../var"
+
+.hide
+  display: none !important
+
+body.light
+  background: $bg-main
+
+body
+  overscroll-behavior: none
+  -webkit-tap-highlight-color: transparent
+  background: $bg-main
+  img
+    max-width: 100%
+    height: auto
+  & > *
+    font-family: inherit
+
+//test
+.menu-btn
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 20
+  width: fit-content
+  background: white
+  padding: 3px
+
+.menu-test
+  position: fixed
+  left: 0
+  top: 25px
+  z-index: 20
+  display: flex
+  gap: 2px
+  flex-direction: column
+  & > button
+    width: fit-content
+    background: white
+    color: black
+    padding: 2px
+    font-family: inherit
+    border-radius: 2px
+
+.guessPage
+  background: $bg-main
+  display: flex
+  flex-direction: column
+  align-items: center
+  overflow: hidden
+  -webkit-tap-highlight-color: transparent
+
+  .btn
+    width: fit-content
+    min-width: 166px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: $font-exo2-semiBold
+    text-transform: uppercase
+    font-size: 14px
+    color: $text-dark
+    padding: 0 16px
+    height: 40px
+    min-height: 40px
+    background-color: $accent-cyan
+    border-radius: 6px
+    z-index: 2
+    transition: background .4s ease-in-out
+    animation: pulseScale 3s ease-in-out infinite
+    &:hover
+      cursor: pointer
+      background-color: $accent-cyan-hover
+    &.lock
+      filter: grayscale(90%)
+      pointer-events: none
+      animation: none
+
+  ._opacity
+    opacity: 0 !important
+    transition: none !important
+  .container
+    width: 768px
+    margin: 0 auto
+  .h2
+    font-family: $font-exo2-bold
+    color: $text-light
+    font-size: 32px
+    line-height: 100%
+    text-transform: uppercase
+    margin: 0 auto
+    text-align: center
+  .banner
+    width: 1309px
+    height: 340px
+    display: block
+    position: relative
+    background: url('../img/banner-bg-desc.jpg') no-repeat 50% 50%/cover
+    @media screen and (max-width: 1050px)
+      background: url('../img/banner-bg-tab.jpg') no-repeat 50% 50%/cover
+    @media screen and (max-width: 600px)
+      background: url('../img/banner-bg-mob.jpg') no-repeat 50% 50%/cover
+    &__wrapper
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 20px
+      height: 100%
+      padding: 20px 0
+    &__btn
+      font-size: 18px
+      min-height: 50px
+      padding: 0 20px
+    &__left
+      animation: bannerTextDrop 0.7s ease-out forwards
+      width: 545px
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      gap: 10px
+    &__title
+      font-size: 32px
+      line-height: 100%
+      text-transform: uppercase
+      color: $accent-cyan
+      font-family: $font-exo2-bold
+    &__fund
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      margin-bottom: 16px
+      &-top
+        font-family: $font-exo2-bold
+        font-size: 16px
+        line-height: 100%
+        text-transform: uppercase
+        color: $text-light
+      &-center
+        font-family: $font-display-bold
+        font-size: 80px
+        line-height: 100%
+        text-transform: uppercase
+        color: $accent-cyan
+        position: relative
+      &-bottom
+        text-transform: uppercase
+        font-family: $font-exo2-bold
+        font-size: 18px
+        line-height: 100%
+        color: $text-light
+        margin-top: -5px
+    &__right
+      align-self: flex-start
+      display: flex
+      justify-content: center
+      align-items: flex-start
+    &__card
+      position: relative
+      .beam
+        width: 237px
+        position: absolute
+        top: -170px
+        right: 3px
+        z-index: 1
+        transform-origin: top center
+        animation: beamReveal 0.8s ease-out forwards
+        opacity: 0
+      &.team1
+        .beam
+          animation-delay: 0s
+      &.team2
+        .beam
+          animation-delay: 0.5s
+    .card
+      background: url('../img/card.png') no-repeat 50% 50%/contain
+      width: 225px
+      height: 212px
+      z-index: 3
+      position: relative
+      display: flex
+      &::after
+        content: ''
+        position: absolute
+        inset: 0
+        z-index: 0
+        pointer-events: none
+        background: linear-gradient(105deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.25) 50%, transparent 60%, transparent 100%)
+        background-size: 200% 100%
+        -webkit-mask-image: url('../img/card.png')
+        mask-image: url('../img/card.png')
+        -webkit-mask-size: contain
+        mask-size: contain
+        -webkit-mask-position: 50% 50%
+        mask-position: 50% 50%
+        -webkit-mask-repeat: no-repeat
+        mask-repeat: no-repeat
+        animation: cardShine 4s ease-in-out infinite
+      &__content
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 100%
+        padding: 20px 50px
+        position: relative
+        z-index: 1
+      &__name
+        position: absolute
+        top: 20px
+        font-family: $font-exo2-bold
+        font-size: 16px
+        line-height: 100%
+        color: $text-light
+        max-width: 112px
+        text-align: center
+        text-transform: uppercase
+      &__star
+        width: 8px
+        height: 8px
+        background: url('../img/icons/star-empty.svg') no-repeat 50% 50%/cover
+      &__stats
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &-left
+          display: flex
+          flex-direction: column
+          gap: 1.3px
+          &.star-1
+            .card__star
+              &:nth-of-type(5)
+                background: url('../img/icons/star-full.svg') no-repeat 50% 50%/cover
+          &.star-2
+            .card__star
+              &:nth-of-type(5), &:nth-of-type(4)
+                background: url('../img/icons/star-full.svg') no-repeat 50% 50%/cover
+          &.star-3
+            .card__star
+              &:nth-of-type(5), &:nth-of-type(4),  &:nth-of-type(3)
+                background: url('../img/icons/star-full.svg') no-repeat 50% 50%/cover
+          &.star-4
+            .card__star
+              &:nth-of-type(5), &:nth-of-type(4),  &:nth-of-type(3), &:nth-of-type(2)
+                background: url('../img/icons/star-full.svg') no-repeat 50% 50%/cover
+          &.star-5
+            .card__star
+              &:nth-of-type(1), &:nth-of-type(2),  &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(5)
+                background: url('../img/icons/star-full.svg') no-repeat 50% 50%/cover
+        &-right
+          display: flex
+          flex-direction: column
+          gap: 5px
+      &__person
+        position: absolute
+        height: 272px
+        width: 99px
+        left: 50%
+        top: 30%
+        transform: translateX(-50%)
+        z-index: 1
+        animation: levitation 3s ease-in-out infinite
+        &.delay
+          animation: levitation 2.7s ease-in-out infinite
+      &__property
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        //gap: 4px
+        &-item, &-value
+          font-family: $font-exo2-regular
+          font-size: 9px
+          line-height: 100%
+          text-transform: uppercase
+          color: $text-stats
+    &__logo
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-self: center
+      gap: 8px
+      z-index: 5
+      &-item
+        width: 39px
+        height: 40px
+        &.team1
+          background: url('../img/team-1-logo.png') no-repeat 50% 50%/cover
+        &.team2
+          background: url('../img/team-1.png') no-repeat 50% 50%/cover
+    &__vs
+      color: $text-light
+      font-family: $font-exo2-bold
+      font-size: 14px
+      line-height: 14px
+      padding-bottom: 2px
+      text-align: center
+
+  .conditions
+    margin: 48px auto 0
+    color: $text-light
+    font-family: $font-exo2-regular
+    font-size: 18px
+    line-height: 25px
+    text-align: center
+
+  .predict
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 16px
+    &__tabs
+      width: 100%
+      display: flex
+      border-radius: 8px
+      padding: 4px
+      background-color: $bg-table
+      height: 41px
+      &-item
+        width: 50%
+        display: flex
+        justify-content: center
+        align-items: center
+        text-transform: uppercase
+        font-size: 14px
+        line-height: 100%
+        font-family: $font-exo2-semiBold
+        color: $text-white
+        border-radius: 8px
+        cursor: pointer
+        &.goal
+          position: relative
+        &.active
+          background-color: $bg-tab
+          box-shadow: 0 1px 15px 0 rgba(0, 0, 85, 0.18)
+        &.unactive
+          color: $text-disabled
+          cursor: default
+        &.unactive:hover .predict__tabs-tooltip,
+        &._tooltip-visible .predict__tabs-tooltip
+          opacity: 1
+          visibility: visible
+      &-tooltip
+        position: absolute
+        bottom: calc(100% + 10px)
+        right: 15%
+        transform: translateX(-50%)
+        padding: 4px 8px 6px
+        width: 211px
+        background-color: $bg-tooltip
+        color: $text-dark-blue
+        font-size: 12px
+        line-height: 14px
+        font-family: $font-exo2-regular
+        text-transform: none
+        text-align: center
+        border-radius: 4px
+        white-space: normal
+        opacity: 0
+        visibility: hidden
+        transition: opacity 0.2s, visibility 0.2s
+        z-index: 10
+        &::after
+          content: ""
+          position: absolute
+          top: 100%
+          left: 91%
+          margin-left: -6px
+          border: 6px solid transparent
+          border-top-color: $bg-tooltip
+    &__wrap
+      width: 100%
+      min-height: 246px
+      height: 246px
+      border-radius: 8px
+      background: url('../img/predict-bg-desc.png') no-repeat 50% 50%/cover
+      @media screen and (max-width: 1050px)
+        background: url('../img/predict-bg-desc.png') no-repeat 50% 50%/cover
+      @media screen and (max-width: 600px)
+        background: url('../img/predict-bg-mob.png') no-repeat 50% 50%/cover
+    &__content
+      height: 100%
+      display: flex
+      justify-content: space-between
+      align-self: center
+      padding: 16px 32px
+    &__left
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      gap: 16px
+      position: relative
+      &:after
+        content: ""
+        display: block
+        height: 100%
+        width: 1px
+        background-color: $border-blue
+        position: absolute
+        right: -31px
+        top: 0
+      &-date
+        display: flex
+        gap: 5px
+        font-size: 14px
+        font-family: $font-exo2-bold
+        color: $text-white
+        span
+          font-size: 14px
+          font-family: $font-exo2-bold
+          color: $text-white
+      .match-select
+        display: flex
+        align-items: center
+        gap: 16px
+        &__label
+          white-space: nowrap
+          color: $text-light
+          font-size: 14px
+          font-family: $font-exo2-regular
+      .dropdown
+        &.select
+          margin: 0
+          position: relative
+          min-width: 187px
+          max-width: 220px
+          summary::-webkit-details-marker
+            display: none
+          > summary
+            list-style: none
+          &[open] > .select__summary
+            border-bottom: 2px solid $text-white
+      .select
+        &__summary
+          padding: 5px 15px 5px 8px
+          display: flex
+          align-items: center
+          background: $bg-table
+          border: 2px solid $bg-table-head
+          border-radius: 6px
+          cursor: pointer
+          position: relative
+          transition: .2s ease
+          &:after
+            content: ''
+            display: block
+            width: 10px
+            height: 10px
+            background: url('../img/icons/arrow-down.svg') no-repeat 50% 50%/cover
+            position: absolute
+            right: 5px
+            transition: .3s ease
+            .select__summary:after
+              transform: rotate(180deg)
+          &:hover
+            border-bottom: 2px solid $text-white
+        &__menu
+          position: absolute
+          top: 100%
+          left: -96px
+          width: 283px
+          background: #123a52
+          overflow: hidden
+          box-shadow: 0 10px 25px rgba(0,0,0,.4)
+          z-index: 10
+          max-height: 122px
+          overflow-y: auto
+          scrollbar-width: auto
+          &::-webkit-scrollbar
+            width: 2px
+            background: $text-gray
+          &::-webkit-scrollbar-thumb
+            background: $accent-blue
+            width: 2px
+        &__current
+          font-size: 14px
+          line-height: 16px
+          color: $text-white
+          font-family: $font-exo2-regular
+        &__item
+          display: flex
+          align-items: center
+          justify-content: space-between
+          gap: 5px
+          padding: 8px 22px 8px 8px
+          cursor: pointer
+          transition: .2s ease
+          border-bottom: 1px solid $border-blue
+          position: relative
+          max-height: 31px
+          &:hover, &:active
+            span
+              color: $text-white
+          span
+            color: $text-disabled
+            font-size: 12px
+            font-family: $font-exo2-regular
+            transition: .2s ease
+            width: fit-content
+            display: block
+        input
+          display: none
+        input:checked + span:after
+          content: ''
+          position: absolute
+          top: 35%
+          right: 3px
+          width: 15px
+          height: 11px
+          display: block
+          background: url('../img/icons/check.svg') no-repeat 50% 50%/cover
+    &__calc
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      gap: 8px
+      &-title
+        font-family: $font-exo2-regular
+        font-size: 16px
+        color: $text-muted
+      &-forecasts
+        display: flex
+        gap: 8px
+        &--item
+          width: 86px
+          height: 30px
+          display: flex
+          justify-content: center
+          align-items: center
+          gap: 8px
+          border-radius: 6px
+          background-color: $bg-table
+          font-size: 12px
+          line-height: 100%
+          font-family: $font-exo2-regular
+          color: $text-light
+          transition: background .3s ease-in-out
+          span
+            color: $accent-green
+            font-size: 12px
+            line-height: 100%
+            font-family: $font-exo2-regular
+          &:hover
+            cursor: pointer
+            background-color: $bg-button
+          &.active
+            background-color: $accent-cyan
+            color: $text-dark-blue
+            span
+              color: $text-dark-blue
+    &__right
+      width: 366px
+      display: flex
+      justify-content: center
+      .score, .goal
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 16px
+        &._lock
+          .predict__team-control
+            pointer-events: none
+          .predict__team-decrease, .predict__team-increase
+            display: none
+          .predict__radio
+            opacity: 0
+            pointer-events: none
+            input[type="radio"]
+              &:not(:checked) + label
+                background: url('../img/icons/circle-active.svg') no-repeat 50% 50%/cover
+      &-title
+        font-size: 12px
+        text-align: center
+        font-family: $font-exo2-regular
+        color: $text-muted
+      &-teams
+        display: flex
+        align-items: stretch
+        justify-content: center
+        gap: 16px
+    &__team
+      width: 126px
+      display: flex
+      flex-direction: column
+      gap: 8px
+      align-items: center
+      justify-content: center
+      &-logo
+        width: 40px
+        height: 40px
+      &.team1
+        .predict__team-logo
+          background: url('../img/team-1.png') no-repeat 50% 50%/cover
+      &.team2
+        .predict__team-logo
+          background: url('../img/team-1-logo.png') no-repeat 50% 50%/cover
+      &-name
+        font-size: 15px
+        line-height: 100%
+        color: $text-light
+        font-family: $font-exo2-bold
+        text-transform: uppercase
+        max-width: 115px
+        min-width: 0
+        text-align: center
+        flex: 1
+        display: flex
+        align-items: center
+        justify-content: center
+        min-height: 0
+        overflow-wrap: break-word
+        word-break: break-word
+      &-control
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: 16px
+      &-decrease, &-increase
+        user-select: none
+        pointer-events: initial
+        cursor: pointer
+        z-index: 5
+        display: block
+        width: 36px
+        height: 36px
+        border-radius: 6px
+        background-size: 100% 100%
+        transition: all 0.4s
+      &-decrease
+        background: url('../img/icons/minus.svg') no-repeat 50% 50%/10px 10px
+        background-color: $bg-table-head
+        &:active
+          background: url('../img/icons/minus.svg') no-repeat 50% 50%/10px 10px
+          background-color: $bg-button
+        &:hover
+          background: url('../img/icons/minus.svg') no-repeat 50% 50%/10px 10px
+          background-color: $bg-button
+      &-increase
+        background: url('../img/icons/plus.svg') no-repeat 50% 50%/10px 10px
+        background-color: $bg-table-head
+        &:active
+          background: url('../img/icons/plus.svg') no-repeat 50% 50%/10px 10px
+          background-color: $bg-button
+        &:hover
+          background: url('../img/icons/plus.svg') no-repeat 50% 50%/10px 10px
+          background-color: $bg-button
+      &-number
+        text-align: center
+        width: 22px
+        font-size: 16px
+        color: $text-light
+        font-family: $font-exo2-bold
+    &__container
+      &.goal
+        .predict
+          &__team
+            padding: 8px 2px
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            gap: 8px
+            width: 120px
+            height: 116px
+            border-radius: 6px
+            background-color: $bg-table-head
+            &:has(.predict__radio._active)
+              background-color: $bg-tab
+            &-name
+              font-size: 13px
+              line-height: 13px
+            &.active
+              background-color: $bg-tab
+            input[type="radio"]
+              display: none
+          &__radio
+            label
+              width: 20px
+              height: 20px
+              display: block
+              cursor: pointer
+              transition: .3s ease-in-out
+              background: url('../img/icons/circle.svg') no-repeat 50% 50%/cover
+              &:hover
+                background: url('../img/icons/circle-active.svg') no-repeat 50% 50%/cover
+            &._active
+              label
+                background: url('../img/icons/circle-active.svg') no-repeat 50% 50%/cover
+
+
+
+    &__last
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      width: 100%
+      border-radius: 6px
+      background-color: $bg-last-predict
+      padding: 16px
+      gap: 16px
+      &-item
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 5px
+      &-top
+        display: flex
+        gap: 4px
+      &-title
+        font-size: 14px
+        color: $text-muted
+        font-family: $font-exo2-regular
+      &-result
+        font-size: 14px
+        font-family: $font-exo2-regular
+        &.confitmed
+          color: $accent-green
+        &.unconfirmed
+          color: $accent-red
+      &-bottom
+        display: flex
+      &-goal
+        font-size: 14px
+        font-family: $font-exo2-regular
+        color: $text-muted
+      &-team
+        text-transform: uppercase
+        font-size: 12px
+        font-family: $font-exo2-bold
+        color: $text-light
+        position: relative
+        &:after
+          content: ''
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          right: -25px
+          width: 20px
+          height: 20px
+          display: block
+          background: url('../img/team-1-logo.png') no-repeat 50% 50%/cover
+        &.team1
+          .predict__team
+            &-logo
+              background: url('../img/team-1.png') no-repeat 50% 50%/cover
+        &.team2
+          .predict__team
+            &-logo
+              background: url('../img/team-2.png') no-repeat 50% 50%/cover
+      &-item
+        &.score
+          display: flex
+          gap: 8px
+          .predict__last
+            &-team
+              &.team1
+                &:after
+                  right: calc(100% + 5px)
+            &-counter
+              display: flex
+              gap: 16px
+              align-items: center
+              justify-content: center
+              span
+                font-family: $font-exo2-bold
+                font-size: 12px
+                color: $text-light
+
+
+    &__vs
+      align-self: center
+      font-size: 16px
+      text-transform: uppercase
+      color: $text-muted
+      font-family: $font-exo2-bold
+
+  .bonus
+    margin: 16px 0
+    display: flex
+    padding: 0 32px
+    justify-content: space-between
+    align-items: center
+    height: 79px
+    overflow: hidden
+    background: url('../img/bonus-bg.png') no-repeat 50% 50%/cover
+    @media screen and (max-width: 600px)
+      background: url('../img/bonus-bg-mob.png') no-repeat 50% 50%/cover
+    &__btn
+      min-width: 80px
+      font-size: 14px
+      padding: 0 5px
+    &__left
+      display: flex
+      flex-direction: column
+      gap: 8px
+      &-title
+        font-size: 18px
+        font-family: $font-exo2-bold
+        color: $text-light
+        text-transform: uppercase
+      &-total
+        display: flex
+        gap: 4px
+        border-radius: 6px
+        padding: 4px 8px
+        background-color: $bg-table
+      &-available
+        font-size: 12px
+        font-family: $font-exo2-regular
+        color: $text-light
+      &-number
+        font-size: 12px
+        font-family: $font-exo2-regular
+        color: $accent-green
+    &__decor
+      position: relative
+      &-ball
+        position: absolute
+        width: 56px
+        right: 61px
+        top: 5px
+      &-gift
+        position: absolute
+        width: 115px
+        right: -108px
+        top: -32px
+        animation: levitation 3s ease-in-out infinite
+      &-cup
+        position: absolute
+        width: 80px
+        left: 22px
+        top: -10px
+
+  .drop
+    margin: auto
+  .dropdown
+    margin: 48px auto
+    outline: none!important
+    cursor: pointer
+    position: relative
+    width: 100%
+    max-width: 768px
+    text-align: start
+    &.rules
+      margin: 15px auto 50px
+    summary::-webkit-details-marker
+      display: none
+    > summary
+      list-style: none
+    summary
+      width: 100%
+      font-family: $font-exo2-bold
+      font-size: 18px
+      color: $text-gray
+      padding: 12px 20px 12px 0px
+      outline: none!important
+      position: relative
+      display: flex
+      align-items: center
+      user-select: none
+      border-bottom: 1px solid $border-blue
+      z-index: 1
+      ::-webkit-details-marker
+        display: none
+      &.rules
+        border-bottom: 1px solid rgba($border-gray, 0.2)
+      &:after
+        content: ''
+        background: url('../img/icons/arrow-down.svg') no-repeat 50% 50%/cover
+        width: 12px
+        height: 12px
+        position: absolute
+        right: 0px
+        display: block
+    &[open]
+      summary
+        &:after
+          transform: rotate(180deg)
+    .drop-txt
+      width: 100%
+      margin-top: 30px
+      overflow-wrap: break-word
+      text-align: start
+      cursor: auto
+      background-size: 100% 100%
+      &-list
+        padding: 0px 10px 0px 0px
+        max-height: 280px
+        overflow-y: auto
+        scrollbar-width: auto
+        &::-webkit-scrollbar
+          width: 2px
+          background: $text-gray
+        &::-webkit-scrollbar-thumb
+          background: $accent-blue
+          width: 2px
+        p, h2, h3, h4, h5, h6, strong, div, span, ul>li, ol>li
+          margin-bottom: 10px
+          font-size: 16px
+          line-height: 22px
+          font-family: $font-text-regular
+          color: $text-gray
+        ul > li
+          padding-left: 20px
+          position: relative
+          &::before
+            position: absolute
+            content: ''
+            width: 4px
+            height: 4px
+            background: $text-gray
+            border-radius: 50%
+            display: inline-block
+            left: 7px
+            top: 8px
+        a
+          color: $text-gray
+          font-family: $font-text-regular
+          text-decoration: underline
+          position: relative
+          &:hover
+            text-decoration: none
+        .retreat1
+          padding-left: 20px
+        .retreat2
+          padding-left: 30px
+        .circle
+          padding-left: 20px
+          &:before
+            content: ''
+            width: 4px
+            height: 4px
+            background: $text-gray
+            border-radius: 50%
+            display: inline-block
+            margin: 0 5px 3px 0
+  .results
+    margin: 35px auto
+    .table
+      margin: 30px auto
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: flex-start
+      width: 736px
+      max-width: 736px
+      min-height: 440px
+      z-index: 1
+      background: $bg-table
+      &__wrapper
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: 4px
+        height: 47px
+        position: relative
+        &:after
+          pointer-events: none
+          user-select: none
+          content: ''
+          position: absolute
+          display: block
+          top: 0
+          left: 37px
+          width: 30px
+          height: 47px
+          z-index: 2
+          background: linear-gradient(265deg, rgba(14, 38, 53, 0.00) 0%, #0E2635 97%)
+        &:before
+          pointer-events: none
+          user-select: none
+          content: ''
+          position: absolute
+          display: block
+          top: 0
+          right: 37px
+          width: 30px
+          height: 47px
+          z-index: 2
+          background: linear-gradient(150deg, rgba(14, 38, 53, 0.00) 0%, #0E2635 97%)
+        &-viewport
+          width: 100%
+          max-width: 640px
+          overflow: hidden
+          touch-action: pan-y
+          cursor: grab
+          user-select: none
+          -webkit-user-select: none
+      &__arrow
+        width: 36px
+        height: 36px
+        border-radius: 6px
+        display: block
+        box-shadow: 0 1px 15px 0 rgba(0, 0, 85, 0.10)
+        transition: all .4s ease-in-out
+        z-index: 5
+        &:hover
+          background-color: $bg-button
+          cursor: pointer
+        &:active
+          background-color: $bg-button
+          cursor: pointer
+        &--left
+          background: url("../img/icons/back_nav.svg") no-repeat 50% 50%/16px 16px
+          background-color: $bg-table-other
+        &--right
+          background: url("../img/icons/next_nav.svg") no-repeat 50% 50%/16px 16px
+          background-color: $bg-table-other
+
+      &__tabs
+        display: flex
+        transition: transform 0.4s ease
+        will-change: transform
+        &--jump .table__tabs-item
+          transition: none
+        &-item
+          display: flex
+          align-items: center
+          justify-content: center
+          flex: 0 0 216px
+          margin: 0 10px
+          opacity: 0
+          transform: scale(0.7) translateZ(0)
+          transition: 0.4s ease
+          pointer-events: none
+          cursor: pointer
+          gap: 7px
+          backface-visibility: hidden
+          &.visible
+            opacity: 0.2
+            transform: scale(0.85) translateZ(0)
+            pointer-events: auto
+          &.active
+            opacity: 1
+            transform: scale(1) translateZ(0)
+            pointer-events: auto
+        &-team
+          display: flex
+          justify-content: center
+          align-items: center
+          font-size: 12px
+          line-height: 12px
+          font-family: $font-exo2-bold
+          color: $text-light
+          text-transform: uppercase
+          text-align: center
+          &.team1
+            position: relative
+            &:before
+              right: calc(100% + 5px)
+              content: ''
+              position: absolute
+              display: block
+              width: 20px
+              height: 20px
+              background: url('../img/team-1-logo.png') no-repeat 50% 50%/cover
+          &.team2
+            position: relative
+            &:before
+              content: ''
+              position: absolute
+              display: block
+              left: calc(100% + 5px)
+              width: 20px
+              height: 20px
+              background: url('../img/team-2.png') no-repeat 50% 50%/cover
+
+        &-vs
+          text-transform: uppercase
+          font-size: 12px
+          font-family: $font-exo2-bold
+          color: $text-muted
+      &__head
+        width: 99%
+        background-color: $bg-table-head
+        border-bottom: 1px solid $border-lighter
+        align-self: flex-start
+        .table__row-item
+          font-family: $font-exo2-regular
+          color: $text-muted
+          font-size: 12px
+          height: 35px
+      &__scroll
+        width: 100%
+        padding-right: 5px
+        box-sizing: border-box
+        display: flex
+        flex-direction: column
+        max-height: 570px
+        &-inner
+          flex: 1
+          min-height: 0
+          overflow-y: auto
+          scrollbar-width: auto
+          &::-webkit-scrollbar
+            width: 4px
+            background: $bg-table
+          &::-webkit-scrollbar-thumb
+            background: $bg-tab
+            width: 2px
+            border-radius: 1px
+      &__body
+        width: 100%
+        display: flex
+        flex-direction: column
+        &#tableOther
+          background: $bg-table-other
+          flex-shrink: 0
+      &__row
+        padding: 0 10px 0 0
+        display: flex
+        width: 100%
+        align-items: center
+        justify-content: space-between
+        position: relative
+        border-bottom: 1px solid $border-lightest
+        transition: background 0.2s ease
+        &-item
+          display: flex
+          align-items: center
+          justify-content: center
+          text-align: center
+          color: $text-gray
+          font-family: $font-exo2-bold
+          font-size: 14px
+          height: 51px
+          &:nth-child(1)
+            width: 100px
+            justify-content: center
+            @media screen and (max-width: 600px)
+              width: 85px
+          &:nth-child(2)
+            width: 80px
+          &:nth-child(3)
+            width: 70px
+          &:nth-child(4)
+            width: 105px
+            justify-content: center
+            padding-right: 0
+            font-weight: 400
+        &.you
+          .you
+            position: absolute
+            left: 0
+            font-family: $font-exo2-bold
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            background: $accent-blue
+            color: $text-white
+            font-size: 8px
+            padding: 3px 3px
+            text-transform: uppercase
+            @media screen and (max-width: 600px)
+              padding: 2px 2px 3px
+              left: 0
+        .place-icon
+          margin-right: 6px
+          width: 16px
+          height: 16px
+          position: absolute
+          left: 20px
+  .note
+    width: 768px
+    margin: 30px auto 0
+    display: flex
+    flex-direction: column
+    gap: 20px
+    p
+      font-family: $font-exo2-regular
+      font-size: 12px
+      line-height: 14px
+      color: $text-note
+  .summary-rules
+    summary
+      font-size: 16px
+
+  .popups
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 5
+    width: 100%
+    height: 100%
+    max-height: 100vh
+    background: $bg-popup
+    backdrop-filter: blur(3px)
+    display: flex
+    align-items: center
+    justify-content: center
+    //transition: opacity .6s ease
+    &__item
+      opacity: 0
+      position: absolute
+      pointer-events: none
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column
+      transition: opacity .7s ease
+      width: 375px
+      padding: 16px 16px 24px
+      background-color: $bg-body-popup
+      border-radius: 6px
+      &-close
+        transition: .3s ease
+        align-self: flex-end
+        width: 16px
+        height: 16px
+        background: url('../img/icons/close.svg') no-repeat 50% 50%/cover
+        &:hover
+          transform: scale(1.5)
+          cursor: pointer
+      &-body
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        gap: 40px
+      &-title
+        font-size: 16px
+        text-transform: uppercase
+        color: $text-white
+        font-family: $font-exo2-semiBold
+        text-align: center
+        margin-bottom: 20px
+      &-btn
+        margin-top: auto
+    &._opacity
+      pointer-events: none
+    &._confirmPopup
+      ._confirmPopup
+        opacity: 1
+        position: relative
+        pointer-events: initial
+        min-height: 200px
+        justify-content: space-between
+    &._bonusPopup
+      ._bonusPopup
+        opacity: 1
+        position: relative
+        pointer-events: initial
+        width: 375px
+        max-height: 655px
+        min-height: 200px
+        &__title
+          font-size: 16px
+          color: $text-white
+          font-family: $font-exo2-semiBold
+        .popups__item
+          &-body
+            gap: 16px
+          &-close
+            width: 24px
+            height: 24px
+      .table
+        width: 340px
+        padding-right: 5px
+        &__head
+          height: 35px
+          display: flex
+          width: 100%
+          border-bottom: 1px solid $border-lighter
+          align-self: flex-start
+          background-color: $bg-bonus-table
+          .table
+            &__row
+              gap: 2px
+              display: flex
+              align-items: center
+              justify-content: flex-start
+              background-color: $bg-bonus-table
+              &-item
+                font-size: 12px
+                line-height: 100%
+                font-family: $font-exo2-regular !important
+                color: $text-muted !important
+        &__row
+          padding: 0 4px
+          background-color: $bg-last-predict
+          display: flex
+          width: 100%
+          align-items: center
+          justify-content: space-between
+          position: relative
+          border-bottom: 1px solid $bg-table-head
+          &-item
+            display: flex
+            align-items: center
+            justify-content: center
+            text-align: center
+            color: $text-white
+            font-family: $font-exo2-regular
+            font-size: 10px
+            height: 64px
+            text-align: center
+            width: 72px
+            &:nth-child(2)
+              width: 72px
+              color: $text-gray
+            &:nth-child(3)
+              width: 72px
+              color: $text-gray
+              font-family: $font-exo2-bold
+
+        &__scroll
+          width: 340px
+          padding-right: 5px
+          &-inner
+            max-height: 519px
+            overflow-y: auto
+            scrollbar-width: auto
+            &::-webkit-scrollbar
+              width: 4px
+              //background: $bg-table
+            &::-webkit-scrollbar-thumb
+              background: $bg-tab
+              width: 2px
+              border-radius: 1px
+        &__claimBtn
+          min-width: 93px
+          height: 32px
+          min-height: 32px
+          padding: 0 2px
+          animation: none
+            
+
+
+
+
+//content styles
+.retreat1
+  padding-left: 20px
+  strong
+    font-family: $font-exo2-bold
+    color: $text-white
+  p
+    //&:not(:last-child)
+    padding-bottom: 15px
+
+.retreat2
+  padding-left: 40px
+  strong
+    font-family: $font-exo2-bold
+    color: $text-white
+  p
+    //&:not(:last-child)
+    padding-bottom: 15px
+
+
+.circle
+  padding-left: 20px
+  &:before
+    content: ''
+    width: 5px
+    height: 5px
+    background: $text-white
+    border-radius: 50%
+    display: inline-block
+    margin: 0 8px 3px 0
+
+@media screen and (max-width: 600px)
+  .circle
+    padding-left: 15px
+  .retreat1
+    padding-left: 15px
+  .retreat2
+    padding-left: 30px
+
+// loader
+
+.spinner-overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  background-color: $bg-main
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 8
+
+.spinner
+  width: 60px
+  height: 60px
+  background: url("../img/loader.svg") no-repeat 0 0/contain
+  animation: scale .7s alternate infinite
+
+.cyberHeat.loading
+  max-height: 90vh
+  overflow: hidden
+
+@keyframes scale
+  0%
+    transform: scale(.8)
+  100%
+    transform: scale(1)
+
+
+@keyframes pulseScale
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.1)
+  100%
+    transform: scale(1)
+
+@keyframes levitation
+  0%, 100%
+    transform: translateX(-50%) translateY(0)
+  50%
+    transform: translateX(-50%) translateY(-3px)
+    
+@keyframes cardShine
+  0%
+    background-position: 200% 0
+  100%
+    background-position: -200% 0
+
+@keyframes beamReveal
+  0%
+    opacity: 0
+    transform: scaleY(0)
+  100%
+    opacity: 1
+    transform: scaleY(1)
+
+@keyframes bannerTextDrop
+  0%
+    opacity: 0
+    transform: translateY(-40px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+
+// iOS custom scrollbar
+.ios-scrollbar-track
+  position: absolute
+  top: 0
+  right: 0
+  width: 2px
+  height: 100%
+  background: $text-gray
+  z-index: 10
+  pointer-events: none
+
+.ios-scrollbar-thumb
+  width: 2px
+  background: $accent-blue
+  border-radius: 1px
+  position: absolute
+  top: 0
+  right: 0
+
+// Hide native scrollbar on iOS when custom scrollbar is active
+.drop-txt-list[data-ios-scrollbar="true"],
+.select__menu[data-ios-scrollbar="true"],
+.guessPage .results .table__scroll-inner[data-ios-scrollbar="true"]
+  scrollbar-width: none
+  -ms-overflow-style: none
+  &::-webkit-scrollbar
+    display: none
+    width: 0
+    height: 0
+
+
+

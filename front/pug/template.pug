@@ -1,0 +1,23 @@
+block head
+
+doctype html
+html(lang="en")
+    head
+        meta(charset='utf-8')
+        title #{title}
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        link(rel="shortcut icon" href="img/favicon.ico" type="image/x-icon")
+        link(rel='stylesheet', href='css/main.css')
+
+    
+        
+    body
+        style.
+            picture, img {
+                display: none;
+            }
+            img.place-icon {
+                display: inline-block !important;
+            }
+        block content
+        script(src='js/main.js')
