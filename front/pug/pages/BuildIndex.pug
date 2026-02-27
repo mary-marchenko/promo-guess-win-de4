@@ -1,16 +1,16 @@
 button.menu-btn menu
 .menu-test
-    //button.lng-btn en
+    button.lng-btn en
     //button.auth-btn auth
     //button.btn-predict predict
-    //button.btn-topForecasts topForecasts
     button.btn-thanks1(data-popup="confirmPopup" data-variant="goal") thanks goal
     button.btn-thanks2(data-popup="confirmPopup" data-variant="score") thanks score
     button.unactiveGoal Unactive first goal
     button.tooltip tooltip
-    button.btn-lastPred-1 last predict-1
-    button.btn-lastPred-2 last predict-2
-    //button.btn-after after 1 game
+    button.btn-confirmed confirmed
+    button.btn-zeroBonuses 0 bonuses
+    button.btn-zeroBonuses 1 bonus table
+    button.btn-after after 1 game
 
 //.guessPage.loading
 .guessPage
@@ -19,13 +19,13 @@ button.menu-btn menu
     .banner
         .banner__wrapper
             .banner__left
-                .banner__title(data-translate="bannerName") ВГАДАВ – ЗАБРАВ
+                .banner__title(data-translate="bannerName")
                 .banner__fund
-                    .banner__fund-top(data-translate="bannerFund") Призовий фонд
-                    .banner__fund-center(data-translate="bannerPrize") 200 000 ₴
-                    .banner__fund-bottom(data-translate="bannerInsurance") + бонус «Страховка ставки» до 500 ₴
-                a.banner__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="guessWin" data-button="authorization_banner") Авторизуватись
-                button.banner__btn.btn.part-btn.hide.toPredict(data-translate="partBtn" data-promo="guessWin" data-button="takePart_banner") Зробити прогноз
+                    .banner__fund-top(data-translate="bannerFund")
+                    .banner__fund-center(data-translate="bannerPrize")
+                    .banner__fund-bottom(data-translate="bannerInsurance")
+                a.banner__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="guessWin" data-button="authorization_banner")
+                button.banner__btn.btn.part-btn.hide.toPredict(data-translate="partBtn" data-promo="guessWin" data-button="takePart_banner")
             .banner__right
                 .banner__card.team1
                     .beam
@@ -35,7 +35,7 @@ button.menu-btn menu
                             img(src="img/card-bg.png" alt="beam")
                     .card
                         .card__content
-                            .card__name(data-translate="team1Name") Реал Мадридддд
+                            .card__name(data-translate="team1") Реал Мадридддд
                             .card__stats
                                 .card__stats-left.star-4
                                     .card__star
@@ -60,7 +60,7 @@ button.menu-btn menu
                                 img(src="img/team1.png" alt="beam")
                 .banner__logo
                     .banner__logo-item.team1
-                    .banner__vs.vs(data-translate="vs") vs
+                    .banner__vs.vs(data-translate="vs")
                     .banner__logo-item.team2
                 .banner__card.team2
                     .beam
@@ -70,7 +70,7 @@ button.menu-btn menu
                             img(src="img/card-bg.png" alt="beam")
                     .card
                         .card__content
-                            .card__name(data-translate="team1Name") Мілан
+                            .card__name(data-translate="team2")
                             .card__stats
                                 .card__stats-left.star-3
                                     .card__star
@@ -80,13 +80,13 @@ button.menu-btn menu
                                     .card__star
                                 .card__stats-right
                                     .card__property
-                                        .card__property-item(data-translate="cardAtt") att
+                                        .card__property-item(data-translate="cardAtt")
                                         .card__property-value 56
                                     .card__property
-                                        .card__property-item(data-translate="cardMid") mid
+                                        .card__property-item(data-translate="cardMid")
                                         .card__property-value 56
                                     .card__property
-                                        .card__property-item(data-translate="cardDef") def
+                                        .card__property-item(data-translate="cardDef")
                                         .card__property-value 55
                         .card__person.delay
                             picture
@@ -95,7 +95,7 @@ button.menu-btn menu
                                 img(src="img/team2.png" alt="beam")
 
 
-    .conditions.container(data-translate="conditions") З 19 лютого 2026 року роби свої прогнози на точні рахунки матчів, прогнозуй перший гол, роби ставки від 500 ₴ та розділи призовий фонд.
+    .conditions.container(data-translate="conditions")
 
     .drop.container
         details.dropdown
@@ -113,19 +113,20 @@ button.menu-btn menu
                     p "Lorem ipsum dolor sit amet, co
 
     .predict.container#predict
-        h2.h2.predict__title(data-translate="predictTitle") Зроби свії прогнози
+        h2.h2.predict__title(data-translate="predictTitle")
         .predict__tabs
-            .predict__tabs-item.score.active(data-translate="predictScore") Точний рахунок
-            .predict__tabs-item.goal(data-translate="predictGoal")
-                | Перший гол
-                span.predict__tabs-tooltip(data-translate="GoalTooltip") Прогноз на перший гол приймається виключно після прогнозу на рахунок матчу
+            .predict__tabs-item.score.active
+                span.predict__tabs-title(data-translate="predictScore")
+            .predict__tabs-item.goal
+                span.predict__tabs-title(data-translate="predictGoal")
+                span.predict__tabs-tooltip(data-translate="GoalTooltip")
         .predict__wrap
             .predict__content
                 .predict__left
                     .predict__left-matchs
                         form
                             .match-select
-                                .match-select__label Обери матч:
+                                .match-select__label(data-translate="matchSelect")
                                 details.dropdown.select
                                     summary.select__summary
                                         span.select__current Реал Мадрид – Бенфіка
@@ -175,9 +176,9 @@ button.menu-btn menu
                                             input(type="radio" name="match" value="psg-bayern")
                                             span Реал Мадрид – Реал МадридМадрид
 
-                    .predict__left-date(data-translate="predictDateMatch1") #[span.predic-date 13.11] / #[span.predic-time 21:45]
+                    .predict__left-date(data-translate="predictDateMatch1")
                     .predict__calc
-                        .predict__calc-title(data-translate="predictPopular") Найпопулярніші прогнози
+                        .predict__calc-title(data-translate="predictPopular")
                         .predict__calc-forecasts
                             .predict__calc-forecasts--item #[span 20%] 0-2
                             .predict__calc-forecasts--item #[span 30%] 1-2
@@ -185,144 +186,157 @@ button.menu-btn menu
                 .predict__right
                     // score
                     .predict__container.score(data-match-number="1")
-                        .predict__right-title(data-translate="predictDoScorePredict") Прогнозуй фінальний рахунок матчу
+                        .predict__right-title(data-translate="predictDoScorePredict")
                         .predict__right-teams
                             .predict__team.team1
                                 .predict__team-logo
-                                .predict__team-name(data-translate="nameTeam1") Мілан
+                                .predict__team-name(data-translate="team1")
                                 .predict__team-control(data-team="team1")
                                     .predict__team-decrease.team1-minus(role="button")
                                     .predict__team-number 0
                                     .predict__team-increase.team1-plus(role="button")
-                            .predict__vs(data-translate="vs") vs
+                            .predict__vs(data-translate="vs")
                             .predict__team.team2
                                 .predict__team-logo
-                                .predict__team-name(data-translate="nameTeam2") Реал Мадриддддд
+                                .predict__team-name(data-translate="team2")
                                 .predict__team-control(data-team="team2")
                                     .predict__team-decrease.team2-minus(role="button")
                                     .predict__team-number 0
                                     .predict__team-increase.team2-plus(role="button")
-                        a.predict__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="guessWin" data-button="authorization_banner") Авторизуватись
-                        button.predict__btn.btn.part-btn.hide(data-translate="partBtn" data-promo="guessWin" data-button="takePart_banner") Зробити прогноз
+                        a.predict__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="guessWin" data-button="authorization_banner")
+                        button.predict__btn.btn.part-btn.hide(data-translate="partBtn" data-promo="guessWin" data-button="takePart_banner")
 
                     //goal
                     .predict__container.goal.hide(data-match-number="1")
-                        .predict__right-title(data-translate="doGoalPredict") Прогнозуй перший гол та фінальний рахунок матчу і отримай додатковий бонус у вигляді «Страховки ставки» до 500 ₴
+                        .predict__right-title(data-translate="doGoalPredict")
                         .predict__right-teams
                             .predict__team.team1
                                 .predict__team-logo
-                                .predict__team-name(data-translate="nameTeam1") Мілан
+                                .predict__team-name(data-translate="team1")
                                 .predict__radio
                                     input(type="radio", name="сhoice", value="team1", id="radio1")
                                     label(for="radio1")
                             .predict__team.team2
                                 .predict__team-logo
-                                .predict__team-name(data-translate="nameTeam2") Реал Мадриддрид
+                                .predict__team-name(data-translate="team2")
                                 .predict__radio
                                     input(type="radio", name="сhoice", value="team2", id="radio2")
                                     label(for="radio2")
-                        a.predict__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="guessWin" data-button="authorization_banner") Авторизуватись
-                        button.predict__btn.btn.part-btn.hide(data-translate="partBtn" data-promo="guessWin" data-button="takePart_banner") Зробити прогноз
+                        a.predict__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="guessWin" data-button="authorization_banner")
+                        button.predict__btn.btn.part-btn.hide(data-translate="partBtn" data-promo="guessWin" data-button="takePart_banner")
 
         .predict__last
             .predict__last-top
-                .predict__last-title(data-translate="lastPredict") Твій останній прогноз:
-                .predict__last-result.confirmed.hide(data-translate="confirmed") Підтверджений
-                .predict__last-result.unconfirmed.active(data-translate="unconfirmed") Не підтверджений
+                .predict__last-title(data-translate="lastPredict")
+                .predict__last-result.confirmed.hide(data-translate="confirmed")
+                .predict__last-result.unconfirmed(data-translate="unconfirmed")
             .predict__last-bottom
                 .predict__last-item.score.hide
-                    .predict__last-team.team1(data-translate="team1") Реал Мадрид
+                    .predict__last-team.team1(data-translate="team1")
                     .predict__last-counter
                         span.scoreTeam1 1
-                        .predict__vs.vs(data-translate="vs") vs
+                        .predict__vs.vs(data-translate="vs")
                         span.scoreTeam2 2
-                    .predict__last-team.team2(data-translate="azerbaijan") Бенфіка
+                    .predict__last-team.team2(data-translate="team2")
                 .predict__last-item.goal
-                    .predict__last-goal(data-translate="firstGoal") Перший гол:
-                    .predict__last-team.team1(data-translate="team1") Бенфіка
+                    .predict__last-goal(data-translate="firstGoal")
+                    .predict__last-team.team1(data-translate="team1")
 
     .bonus.container
         .bonus__left
-            .bonus__left-title(data-translate="yourBonus") Ваші Бонуси
+            .bonus__left-title
+                .bonus__left-title-txt(data-translate="yourBonus")
+                .bonus__left-title-infoTool
+                    span.bonus__left-title-tooltip(data-translate="yourBonus_info")
             .bonus__left-total
-                .bonus__left-available(data-translate="availableBonus") Доступно:
-                .bonus__left-number 2 бонуса
-        .bonus__decor
-            .bonus__decor-ball
-                picture
-                    source(media="(max-width: 600px)" srcset="img/ball-mob.png")
-                    img(src="img/ball-desc.png" alt="ball")
-            .bonus__decor-gift
-                picture
-                    source(media="(max-width: 600px)" srcset="img/gift-mob.png")
-                    img(src="img/gift-desc.png" alt="ball")
-            .bonus__decor-cup
-                picture
-                    source(media="(max-width: 600px)" srcset="img/cup-mob.png")
-                    img(src="img/cup-desc.png" alt="ball")
+                .bonus__left-available(data-translate="availableBonus")
+                .bonus__left-number 2 
+        .bonus__decor-clip
+            .bonus__decor
+                .bonus__decor-ball
+                    picture
+                        source(media="(max-width: 600px)" srcset="img/ball-mob.png")
+                        img(src="img/ball-desc.png" alt="ball")
+                .bonus__decor-gift
+                    picture
+                        source(media="(max-width: 600px)" srcset="img/gift-mob.png")
+                        img(src="img/gift-desc.png" alt="ball")
+                .bonus__decor-cup
+                    picture
+                        source(media="(max-width: 600px)" srcset="img/cup-mob.png")
+                        img(src="img/cup-desc.png" alt="ball")
 
         .bonus__right
-            button.bonus__btn.btn(data-translate="takeBonusBtn" data-popup="bonusPopup") Забрати
+            button.bonus__btn.btn(data-translate="takeBonusBtn" data-popup="bonusPopup")
 
     .results.container
-        h2.h2.results__title(data-translate="results") Результати
+        h2.h2.results__title(data-translate="results")
         .table
             .table__wrapper
                 button.table__arrow.table__arrow--left
                 .table__wrapper-viewport
                     .table__tabs
                         .table__tabs-item.active(data-match="1")
-                            .table__tabs-team.team1(data-translate="team1") 1Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="2")
-                            .table__tabs-team.team1(data-translate="team1") 2Реал МадридМадриМадри
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="3")
-                            .table__tabs-team.team1(data-translate="team1") 3Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="4")
-                            .table__tabs-team.team1(data-translate="team1") 4Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="4")
-                            .table__tabs-team.team1(data-translate="team1") 4Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="4")
-                            .table__tabs-team.team1(data-translate="team1") 4Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="4")
-                            .table__tabs-team.team1(data-translate="team1") 4Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="4")
-                            .table__tabs-team.team1(data-translate="team1") 4Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="4")
-                            .table__tabs-team.team1(data-translate="team1") 4Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                         .table__tabs-item(data-match="4")
-                            .table__tabs-team.team1(data-translate="team1") 4Реал Мадрид
+                            .table__tabs-team.team1(data-translate="team1")
                             .table__tabs-vs.vs(data-translate="vs") vs
-                            .table__tabs-team.team2(data-translate="team2") Бенфіка
+                            .table__tabs-team.team2(data-translate="team2")
                 button.table__arrow.table__arrow--right
+            script.
+                (function(){
+                    var vp = document.querySelector('.guessPage .table__wrapper-viewport');
+                    var track = document.querySelector('.guessPage .table__tabs');
+                    if (vp && track) {
+                        var vw = vp.getBoundingClientRect().width;
+                        track.style.transform = 'translate3d(' + (vw/2 - 120) + 'px, 0, 0)';
+                    }
+                })();
             .table__head
                 .table__row
-                    .table__row-item(data-translate="tablePlayerId") ID гравця
-                    .table__row-item(data-translate="tablePredict") Прогноз
-                    .table__row-item(data-translate="tablePrize") Грошовий приз
-                    .table__row-item(data-translate="tableBonus") Страховка ставки
+                    .table__row-item(data-translate="tablePlayerId")
+                    .table__row-item(data-translate="tablePredict")
+                    .table__row-item(data-translate="tablePrize")
+                    .table__row-item(data-translate="tableBonus")
             .table__scroll
                 .table__body#tableOther
                     .table__row.you
                         .table__row-item 0000067
-                            span.you(data-translate="you") ти
+                            span.you(data-translate="you")
                         .table__row-item #[span 1] #[span.vs vs] #[span 2]
                         .table__row-item ************
                         .table__row-item 25 000 ₴
@@ -421,30 +435,30 @@ button.menu-btn menu
     .popups._opacity
         .popups__item._confirmPopup.popup(data-popup="confirmPopup")
             .popups__item-close
-            .popups__item-title(data-translate="thenks") Дякуємо, твій прогноз прийнятий!
+            .popups__item-title(data-translate="thenks")
             .popups__item-body
                 .predict__last-item.score.hide
-                    .predict__last-team.team1(data-translate="team1") Реал Мадрид
+                    .predict__last-team.team1(data-translate="team1")
                     .predict__last-counter
                         span.scoreTeam1 1
-                        .predict__vs.vs(data-translate="vs") vs
+                        .predict__vs.vs(data-translate="vs")
                         span.scoreTeam2 2
-                    .predict__last-team.team2(data-translate="azerbaijan") Бенфіка
+                    .predict__last-team.team2(data-translate="team2")
                 .predict__last-item.goal
-                    .predict__last-goal(data-translate="firstGoal") Перший гол:
-                    .predict__last-team.team1(data-translate="team1") Бенфіка
+                    .predict__last-goal(data-translate="firstGoal")
+                    .predict__last-team.team1(data-translate="team1")
                 .popups__item-predict.score.hide
-                .popups__item-btn.btn(data-translate="continue") Продовжити
+                .popups__item-btn.btn(data-translate="continue")
         .popups__item._bonusPopup.popup(data-popup="bonusPopup")
             .popups__item-close
             .popups__item-body
-                ._bonusPopup__title(data-translate="yourBonuses") ВАШІ БОНУСИ
+                ._bonusPopup__title(data-translate="yourBonuses")
                 .table
                     .table__head
                         .table__row
-                            .table__row-item(data-translate="bonusEvent") Подія
-                            .table__row-item(data-translate="bonusDate") Дата
-                            .table__row-item(data-translate="bonus") Бонус
+                            .table__row-item(data-translate="bonusEvent")
+                            .table__row-item(data-translate="bonusDate")
+                            .table__row-item(data-translate="bonus")
                             .table__row-item
                     .table__scroll
                         .table__scroll-inner
@@ -453,67 +467,67 @@ button.menu-btn menu
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500₴ х1
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Реал Мадрид vs Бенфіка
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500₴ х1
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500 ₴ х1
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500₴ х1
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 .table__row
                                     .table__row-item Мілан vs Інтер
                                     .table__row-item 08.03.26
                                     .table__row-item Бонус до 500
-                                    button.table__claimBtn.btn(data-translate="takeBonusBtn") ЗАБРАТИ
+                                    button.table__claimBtn.btn(data-translate="takeBonusBtn")
                                 //.table__row
                                 //    .table__row-item Мілан vs Інтер
                                 //    .table__row-item 08.03.26

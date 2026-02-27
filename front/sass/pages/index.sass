@@ -573,7 +573,12 @@ body
             pointer-events: none
             input[type="radio"]
               &:not(:checked) + label
+                background: url('../img/icons/circle.svg') no-repeat 50% 50%/cover
+              &:checked + label
                 background: url('../img/icons/circle-active.svg') no-repeat 50% 50%/cover
+            &:has(input:checked)
+              opacity: 1
+
       &-title
         font-size: 12px
         text-align: center
@@ -632,6 +637,8 @@ body
         border-radius: 6px
         background-size: 100% 100%
         transition: all 0.4s
+      &._lock
+        display: none
       &-decrease
         background: url('../img/icons/minus.svg') no-repeat 50% 50%/10px 10px
         background-color: $bg-table-head
@@ -720,7 +727,7 @@ body
       &-result
         font-size: 14px
         font-family: $font-exo2-regular
-        &.confitmed
+        &.confirmed
           color: $accent-green
         &.unconfirmed
           color: $accent-red
@@ -788,10 +795,14 @@ body
     justify-content: space-between
     align-items: center
     height: 79px
-    overflow: hidden
+    position: relative
+    overflow: visible
     background: url('../img/bonus-bg.png') no-repeat 50% 50%/cover
     @media screen and (max-width: 600px)
       background: url('../img/bonus-bg-mob.png') no-repeat 50% 50%/cover
+    &._tooltip-visible .bonus__left-title-tooltip
+      opacity: 1
+      visibility: visible
     &__btn
       min-width: 80px
       font-size: 14px
@@ -800,12 +811,67 @@ body
       display: flex
       flex-direction: column
       gap: 8px
+      position: relative
+      z-index: 2
       &-title
-        font-size: 18px
-        font-family: $font-exo2-bold
-        color: $text-light
-        text-transform: uppercase
+        display: flex
+        justify-content: flex-start
+        gap: 8px
+        align-items: center
+        &-txt
+          font-size: 18px
+          font-family: $font-exo2-bold
+          color: $text-light
+          text-transform: uppercase
+        &-infoTool
+          transition: all .2s ease-in-out
+          cursor: pointer
+          width: 12px
+          height: 12px
+          display: block
+          position: relative
+          background: url('../img/icons/info.svg') no-repeat 50% 50%/cover
+          &:hover
+            transform: scale(1.3)
+          &:hover .bonus__left-title-tooltip
+            opacity: 1
+            visibility: visible
+        &-tooltip
+          position: absolute
+          bottom: calc(100% + 10px)
+          left: 50%
+          transform: translateX(-50%)
+          padding: 4px 8px 6px
+          width: 211px
+          background-color: $bg-tooltip
+          color: $text-dark-blue
+          font-size: 12px
+          line-height: 14px
+          font-family: $font-exo2-regular
+          text-transform: none
+          text-align: center
+          border-radius: 4px
+          white-space: normal
+          opacity: 0
+          visibility: hidden
+          transition: opacity 0.2s, visibility 0.2s
+          z-index: 20
+          &::after
+            content: ""
+            position: absolute
+            top: 100%
+            left: 50%
+            transform: translateX(-50%)
+            border: 6px solid transparent
+            border-top-color: $bg-tooltip
+          @media screen and (max-width: 600px)
+            position: fixed
+            left: 0
+            top: 0
+            bottom: auto
+            right: auto
       &-total
+        width: fit-content
         display: flex
         gap: 4px
         border-radius: 6px
@@ -819,8 +885,22 @@ body
         font-size: 12px
         font-family: $font-exo2-regular
         color: $accent-green
+    &__decor-clip
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      overflow: hidden
+      pointer-events: none
+      z-index: 1
+
     &__decor
-      position: relative
+      position: absolute
+      bottom: 50%
+      left: 50%
+      width: 0
+      height: 0
       &-ball
         position: absolute
         width: 56px
@@ -838,6 +918,10 @@ body
         left: 22px
         top: -10px
 
+    &__right
+      position: relative
+      z-index: 2
+
   .drop
     margin: auto
   .dropdown
@@ -845,7 +929,7 @@ body
     outline: none!important
     cursor: pointer
     position: relative
-    width: 100%
+    width: 96%
     max-width: 768px
     text-align: start
     &.rules
@@ -988,6 +1072,8 @@ body
         &-viewport
           width: 100%
           max-width: 640px
+          min-width: 0
+          flex: 1
           overflow: hidden
           touch-action: pan-y
           cursor: grab
@@ -998,13 +1084,12 @@ body
         height: 36px
         border-radius: 6px
         display: block
+        visibility: visible
+        flex-shrink: 0
         box-shadow: 0 1px 15px 0 rgba(0, 0, 85, 0.10)
         transition: all .4s ease-in-out
         z-index: 5
         &:hover
-          background-color: $bg-button
-          cursor: pointer
-        &:active
           background-color: $bg-button
           cursor: pointer
         &--left
@@ -1025,7 +1110,7 @@ body
           align-items: center
           justify-content: center
           flex: 0 0 216px
-          margin: 0 10px
+          margin: 0 12px
           opacity: 0
           transform: scale(0.7) translateZ(0)
           transition: 0.4s ease
@@ -1047,6 +1132,7 @@ body
           align-items: center
           font-size: 12px
           line-height: 12px
+          min-height: 20px
           font-family: $font-exo2-bold
           color: $text-light
           text-transform: uppercase
@@ -1055,6 +1141,8 @@ body
             position: relative
             &:before
               right: calc(100% + 5px)
+              top: 50%
+              transform: translateY(-50%)
               content: ''
               position: absolute
               display: block
@@ -1068,6 +1156,8 @@ body
               position: absolute
               display: block
               left: calc(100% + 5px)
+              top: 50%
+              transform: translateY(-50%)
               width: 20px
               height: 20px
               background: url('../img/team-2.png') no-repeat 50% 50%/cover
@@ -1315,7 +1405,7 @@ body
           width: 340px
           padding-right: 5px
           &-inner
-            max-height: 519px
+            max-height: 324px
             overflow-y: auto
             scrollbar-width: auto
             &::-webkit-scrollbar
@@ -1326,6 +1416,7 @@ body
               width: 2px
               border-radius: 1px
         &__claimBtn
+          font-size: 12px
           min-width: 93px
           height: 32px
           min-height: 32px

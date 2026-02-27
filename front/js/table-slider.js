@@ -2,7 +2,7 @@
 
 (function () {
   const SLIDE_WIDTH = 216;
-  const SLIDE_MARGIN = 10;
+  const SLIDE_MARGIN = 12;
   const SLIDE_STEP = SLIDE_WIDTH + SLIDE_MARGIN * 2;
   const SWIPE_THRESHOLD = 50;
   const TRANSITION_DURATION = 400;
@@ -69,7 +69,7 @@
 
     function getTranslateX(index) {
       const vw = viewport.getBoundingClientRect().width;
-      // Центр слайду: лівий margin (10px) + позиція слайду + половина ширини
+      // Центр слайду: лівий margin (12px) + позиція слайду + половина ширини
       const slideCenterX = SLIDE_MARGIN + index * SLIDE_STEP + SLIDE_WIDTH / 2;
       return vw / 2 - slideCenterX;
     }
